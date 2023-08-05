@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <style>
+      body { font-family: Arial, sans-serif; background-color: white;
+      padding: 3rem; } .header { display: flex; justify-content: space-between;
+      margin-bottom: 20px; } .section { margin-bottom: 20px; } .table-header {
+      font-weight: bold; display: flex; justify-content: space-between;
+      padding-bottom: 5px; border-bottom: 1px solid #ccc; } .table-row {
+      display: flex; justify-content: space-between; padding: 5px 0; } .total {
+      font-weight: bold; text-align: right; margin-top: 20px; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h2>Invoice</h2>
+        <div class="section">
+          <strong>From:</strong>
+          {{sender.firstname}} {{sender.lastname}}
+          <br />
+          {{sender.address}}
+          <br />
+          {{sender.email}}
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <strong>To:</strong>
+          <br />
+          {{receiverEmail}}
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <strong>Scheduled Date:</strong>
+      {{scheduledDate}}
+      <br />
+      <strong>Description:</strong>
+      {{description}}
+    </div>
+    <div class="section">
+      <div class="table-header">
+        <div>Item</div>
+        <div>Price</div>
+        <div>Quantity</div>
+        <div>Total</div>
+      </div>
+      {{#each items}}
+        <div class="table-row">
+          <div>{{description}}</div>
+          <div>{{price}}</div>
+          <div>{{quantity}}</div>
+          <div>{{total}}</div>
+        </div>
+      {{/each}}
+    </div>
+    <div class="total">
+      <strong>Total Price:</strong>
+      {{totalPrice}}
+    </div>
+  </body>
+</html>
