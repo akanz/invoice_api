@@ -61,7 +61,7 @@ function sendInvoiceEmail (receiverEmail, pdfFilePath) {
     service: 'gmail',
     auth: {
       user: 'samuelakanz@gmail.com',
-      pass: 'wzilqkpeauhyakbu'
+      pass: process.env.GMAIL_PASS
     }
   })
 
