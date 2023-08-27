@@ -4,7 +4,7 @@ const { generateInvoicePDF, sendInvoiceEmail } = require('../utils/functions/inv
 
 const { invoices: Invoice, users: User } = db
 
-async function saveInvoiceToDB({ description, scheduledDate, senderId, receiverEmail, items, country, address, zipcode }) {
+async function saveInvoiceToDB ({ description, scheduledDate, senderId, receiverEmail, items, country, address, zipcode }) {
   try {
     // Create a new invoice in the database
     const invoice = await Invoice.create({
@@ -26,7 +26,7 @@ async function saveInvoiceToDB({ description, scheduledDate, senderId, receiverE
   }
 }
 
-async function sendInvoiceAsEmail(id) {
+async function sendInvoiceAsEmail (id) {
   try {
     // Fetch the invoice details from the database using the invoice ID
     const { sender, receiverEmail, items, description, scheduledDate } = await Invoice.findByPk(id)

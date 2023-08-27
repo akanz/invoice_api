@@ -13,7 +13,7 @@ router.post('/', validationMiddleware(invoiceSchema), authenticateUser, InvoiceC
 router.patch('/:id', authenticateUser, InvoiceController.updateInvoice)
 
 // Get details of a specific invoice
-router.get('/:id', InvoiceController.getInvoice)
+router.get('/:id', authenticateUser, InvoiceController.getInvoice)
 
 // Delete an existing invoice
 router.delete('/:id', authenticateUser, InvoiceController.deleteInvoice)
