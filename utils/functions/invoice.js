@@ -5,7 +5,9 @@ const moment = require('moment')
 const puppeteer = require('puppeteer')
 const handlebars = require('handlebars')
 
-function generateInvoicePDF (sender, receiverEmail, items, description, scheduledDate, callback) {
+function generateInvoicePDF(sender, receiverEmail, items, description, scheduledDate, callback) {
+  const { username, address, country, email } = sender
+  const userAddr = `${address}, ${country}`
   const templateFilePath = path.join(__dirname, '../../view', 'invoice_template.hbs')
   const pdfFilePath = path.join(__dirname, 'temp', 'invoice.pdf')
 
@@ -23,7 +25,9 @@ function generateInvoicePDF (sender, receiverEmail, items, description, schedule
     console.log(sender)
     // Generate the HTML content using the compiled template and invoice data
     const htmlContent = template({
-      sender,
+      username,
+      email,
+      userAddr,
       receiverEmail,
       items,
       description,
@@ -55,7 +59,7 @@ function generateInvoicePDF (sender, receiverEmail, items, description, schedule
   })
 }
 
-function sendInvoiceEmail (receiverEmail, pdfFilePath) {
+function sendInvoiceEmail(receiverEmail, pdfFilePath) {
   // Configure nodemailer with your email service credentials
   const transporter = nodemailer.createTransport({
     service: 'gmail',
