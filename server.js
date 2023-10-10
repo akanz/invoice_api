@@ -25,7 +25,7 @@ User.hasOne(Account, { foreignKey: 'userId', as: 'account' });
 Account.belongsTo(User, { foreignKey: 'userId' });
 
 //synchronizing the database and forcing it to false so we dont lose data
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
     console.log("db has been re sync")
 })
 
