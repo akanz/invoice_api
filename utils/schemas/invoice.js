@@ -12,7 +12,7 @@ const invoiceSchema = Joi.object({
   senderId: Joi.string().guid().required(),
   receiverEmail: Joi.string().required(),
   status: Joi.string().required(),
-  address: Joi.string().required(),
+  receiverAddress: Joi.string().required(),
   zipcode: Joi.string().required(),
   country: Joi.string().required(),
   items: Joi.array().items(itemSchema).min(1).required()
