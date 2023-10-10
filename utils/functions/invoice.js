@@ -39,7 +39,8 @@ function generateInvoicePDF(sender, receiverEmail, items, description, scheduled
       try {
         // Launch Puppeteer
         const browser = await puppeteer.launch({
-          headless: false
+          headless: false,
+          executablePath: '/usr/bin/chromium-browser'
         })
         const page = await browser.newPage()
 
